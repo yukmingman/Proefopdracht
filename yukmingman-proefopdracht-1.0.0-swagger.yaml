@@ -6,7 +6,8 @@ servers:
 info:
   version: "1.0.0"
   title: proefopdracht
-  description: 
+  description: >-
+    Proefopdracht
 security:
   - OAuth2:
       - read
