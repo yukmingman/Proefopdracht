@@ -6,9 +6,7 @@ servers:
 info:
   version: "1.0.0"
   title: proefopdracht
-  description: >-
-    This is an example of using OAuth2 Password Flow in a specification to
-    describe security to your API.
+  description: 
 security:
   - OAuth2:
       - read
