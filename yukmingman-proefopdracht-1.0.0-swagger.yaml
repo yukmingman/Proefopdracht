@@ -1,0 +1,109 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/yukmingman/proefopdracht/1.0.0
+info:
+  version: "1.0.0"
+  title: proefopdracht
+  description: >-
+    This is an example of using OAuth2 Password Flow in a specification to
+    describe security to your API.
+security:
+  - OAuth2:
+      - read
+      - write
+paths:
+  /login:
+    post:
+      summary: Login with username and password
+      description: >-
+        Returns a token 
+      responses:
+        '200':
+          description: User logged in
+  /register:
+    post:
+      summary: Registers a new account
+      description: >-
+        registers a new account and returns a token
+      security: []
+      responses:
+        '200':
+          description: User registered
+  /grades:
+    get:
+      summary: Gets all the grades
+      description: >-
+        returns all the grades
+      security:
+        - OAuth2: [read]
+      responses:
+        '200':
+          description: Grade shown
+  /modifygrade:
+    post:
+      summary: Gets all the grades
+      description: >-
+        returns all the grades
+      security:
+        - OAuth2: [read]
+      responses:
+        '200':
+          description: Grade shown
+  /deletegrade:
+    post:
+      summary: Deletes the selected grade
+      description: >-
+        grade removed from database
+      security:
+        - OAuth2: [write]
+      responses:
+        '200':
+          description: Grade shown  
+  /addgrade:
+    post:
+      summary: adds a new grade
+      description: >-
+        Adds a new grade to the database
+      security:
+        - OAuth2: [write]
+      responses:
+        '200':
+          description: Grade added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/student_subject'
+components:
+  schemas: 
+    student_subject:
+      type: object
+      required: 
+        - id
+        - student_id
+        - subject_id
+        - grade
+      properties:
+        id:
+          type: integer
+          example: 2
+        student_id:
+          type: integer
+          example: 2
+        subject_id:
+          type: integer
+          example: 2
+        grade:
+          type: integer
+          example: 8
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
